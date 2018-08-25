@@ -4,8 +4,14 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
+Django = " ==2.1"
+bs4 = "==0.0.1"
+requests = "==2.18.4"
 
 [dev-packages]
+Django = "==2.1"
+bs4 = "==0.0.1"
+requests = "==2.18.4"
 
 [requires]
 python_version = "3.6"
