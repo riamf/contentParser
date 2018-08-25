@@ -40,7 +40,6 @@ def index(request):
             try:
                 data.append(future.result())
             except Exception as exc:
-                print("ERROR: {}}".format(url))
                 resp_err = resp_err + 1
             else:
                 resp_ok = resp_ok + 1
