@@ -34,7 +34,7 @@ def index(request):
     resp_err = 0
     resp_ok = 0
     with concurrent.futures.ThreadPoolExecutor(max_workers=30)   as executor:
-        future_to_url = {executor.submit(load_url, url, 10): url for url in urls[:30]}
+        future_to_url = {executor.submit(load_url, url, 10): url for url in urls[:90]}
         for future in concurrent.futures.as_completed(future_to_url):
             url = future_to_url[future]
             try:
