@@ -10,15 +10,15 @@ s = requests.Session()
 
 def load_url(url, timeout):
     response = s.get(url, timeout = timeout)
-    if response.status_code in range(200,300):
-        j = response.json()
-        url = j['url']
-        resp = requests.get(url)
-        if resp.status_code in range(200,300):
-            p = bs4.BeautifulSoup(resp.content, 'lxml')
-            j['content'] = p.text
+    # if response.status_code in range(200,300):
+    #     j = response.json()
+    #     url = j['url']
+    #     resp = requests.get(url)
+    #     if resp.status_code in range(200,300):
+    #         p = bs4.BeautifulSoup(resp.content, 'lxml')
+    #         j['content'] = p.text
         
-        return j
+    #     return j
         
     return response.json()
 
