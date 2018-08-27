@@ -32,7 +32,6 @@ def topStories(request):
     response = HttpResponse(json.dumps(data),content_type = 'application/json')
     return response
 
-
 def _get_top_stories_urls():
     response = hn_proxy_session.get('https://hacker-news.firebaseio.com/v0/topstories.json?print=pretty')
     if response.status_code in range(200,300):

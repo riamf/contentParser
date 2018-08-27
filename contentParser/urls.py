@@ -20,6 +20,6 @@ from . import views
 
 urlpatterns = [
     path('hnproxy/', include('hnproxy.urls')),
-    path('admin/', admin.site.urls),
+    path('webproxy/', include('webproxy.urls')),
     path('',views.index)
 ]

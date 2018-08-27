@@ -18,7 +18,7 @@ def index(request):
 
     content = requests.get('https://hacker-news.firebaseio.com/v0/topstories.json?print=pretty').content
     items = json.loads(content)
-    urls = ['https://hacker-news.firebaseio.com/v0/item/{}.json?print=pretty'.format(id) for id in items]
+    urls = ['https://hacker-news.firebaseio.com/v0/item/{}.json'.format(id) for id in items]
 
     data = []
     resp_err = 0
