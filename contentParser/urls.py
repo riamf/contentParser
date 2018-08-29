@@ -21,5 +21,6 @@ from . import views
 urlpatterns = [
     path('hnproxy/', include('hnproxy.urls')),
     path('webproxy/', include('webproxy.urls')),
+    path('contentExtractor/', include('contentExtractor.urls')),
     path('',views.index)
 ]
