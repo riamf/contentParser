@@ -16,8 +16,9 @@ def topStories(request):
     data = []
     resp_err = 0
     resp_ok = 0
-    with concurrent.futures.ThreadPoolExecutor(max_workers=30)   as executor:
-        future_to_url = {executor.submit(_load_url, url, 10): url for url in urls[:90]}
+    max_stories_to_fetch = 90
+    with concurrent.futures.ThreadPoolExecutor(max_workers=30) as executor:
+        future_to_url = {executor.submit(_load_url, url, 10, idx): url for idx, url in enumerate(urls[:max_stories_to_fetch])}
         for future in concurrent.futures.as_completed(future_to_url):
             try:
                 data.append(future.result())
@@ -29,7 +30,8 @@ def topStories(request):
     if resp_err > 0:
         print("Problems downloading {} stories".format(resp_err))
 
-    response = HttpResponse(json.dumps(data),content_type = 'application/json')
+    # import pdb; pdb.set_trace();
+    response = HttpResponse(json.dumps(sorted(data, key=lambda s: s['order'])),content_type = 'application/json')
     return response
 
 def _get_top_stories_urls():
@@ -41,6 +43,8 @@ def _get_top_stories_urls():
     else:
         return []
 
-def _load_url(url, timeout):
+def _load_url(url, timeout, order):
     response = hn_proxy_session.get(url, timeout = timeout)
-    return response.json()
+    json_response = response.json()
+    json_response['order'] = order
+    return json_response
