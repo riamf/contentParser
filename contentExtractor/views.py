@@ -24,8 +24,8 @@ def index(request):
             all_h += b.find_all('h1')
 
         result = {
-            "p": [p.text.replace("\n"," ").replace("\r", "") for p in all_p],
-            "h": [h.text.replace("\n"," ").replace("\r", "") for h in all_h]
+            "p": [p.text.replace("\n"," ").replace("\r", "").replace("  "," ") for p in all_p],
+            "h": [h.text.replace("\n"," ").replace("\r", "").replace("  "," ") for h in all_h]
         }
         json_data = json.dumps(result)
         response = HttpResponse(json_data, content_type = "application/json")
