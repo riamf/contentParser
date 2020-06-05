@@ -4,13 +4,13 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-Django = " ==2.1"
+Django = "==2.2.13"
 bs4 = "==0.0.1"
 requests = "==2.18.4"
 lxml = "*"
 
 [dev-packages]
-Django = "==2.1"
+Django = "==2.2.13"
 bs4 = "==0.0.1"
 requests = "==2.18.4"
 
